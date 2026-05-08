@@ -91,6 +91,17 @@ export default function DemoLifecycle() {
               </div>
             </div>
 
+            <button
+              onClick={() => {
+                setSeconds(0); // reset timer
+                {clearInterval}; // clear interval
+                console.log('🛑 Timer dihentikan')
+              }}
+              className="mt-8 px-6 py-3 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-500 transition-colors"
+            >
+              Reset Timer
+            </button>
+
           </div>
 
         </div>
