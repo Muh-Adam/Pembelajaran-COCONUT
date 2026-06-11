@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+:root {
+    --background: #0f0f1a;
+    --foreground: #e8e8f0;
+    --card-bg: rgba(255, 255, 255, 0.06);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --card-hover-border: rgba(139, 92, 246, 0.5);
+    --accent-light: #a78bfa;
+    --accent-glow: rgba(139, 92, 246, 0.3);
+    --selection-bg: rgba(139, 92, 246, 0.12);
+    --selection-border: rgba(139, 92, 246, 0.35);
+    --text-muted: rgba(232, 232, 240, 0.55);
+}
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+}
+
+body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+/* APP */
+.app-container {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.app-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(135deg, #fff, var(--accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.35rem;
+}
+
+.app-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+/* SELECTION BANNER */
+.banner {
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    transition: all 0.35s ease;
+}
+
+.banner.empty {
+    background: var(--card-bg);
+    border: 1px dashed var(--card-border);
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.banner.selected {
+    background: var(--selection-bg);
+    border: 1px solid var(--selection-border);
+    animation: slideIn 0.35s ease;
+}
+
+.banner.selected strong {
+    color: var(--accent-light);
+}
+
+/* FOOD LIST */
+.food-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* FOOD CARD */
+.food-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 0.9rem 1.25rem;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(10px);
+}
+
+.food-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--card-hover-border);
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.12);
+}
+
+.food-card span {
+    font-weight: 500;
+}
+
+.food-card button {
+    padding: 0.45rem 1.1rem;
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.food-card button:hover {
+    box-shadow: 0 4px 16px var(--accent-glow);
+    transform: translateY(-1px);
+}
+
+.food-card button:active {
+    transform: scale(0.96);
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
